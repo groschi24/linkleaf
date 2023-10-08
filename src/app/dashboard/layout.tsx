@@ -1,7 +1,8 @@
 import '@mantine/core/styles.css';
 
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
+
+import MainShell from '../ui/app/mainShell';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,14 +14,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang='en'>
-      <head>
-        <ColorSchemeScript />
-      </head>
-      <body>
-        <MantineProvider>{children}</MantineProvider>
-      </body>
-    </html>
-  );
+  return <MainShell>{children}</MainShell>;
 }
