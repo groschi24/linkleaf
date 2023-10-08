@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@/styles/tailwind.css';
 
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
