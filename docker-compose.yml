@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  db:
+    image: mariadb:10.7.4
+    environment:
+      MYSQL_ROOT_PASSWORD: linkleaf
+      MYSQL_DATABASE: linkleaf_local
+      MYSQL_USER: linkleaf
+      MYSQL_PASSWORD: linkleaf
+    ports:
+      - 3306:3306
