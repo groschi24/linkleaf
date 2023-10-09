@@ -2,8 +2,11 @@
 
 import { Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useRouter } from 'next/navigation';
 
 export default function AddNote() {
+  const router = useRouter();
+
   const form = useForm({
     initialValues: {
       title: '',
@@ -20,8 +23,10 @@ export default function AddNote() {
         },
         body: JSON.stringify(values),
       });
-    } catch (error: any) {
-      console.error(error);
+
+      router.refresh();
+    } catch (e) {
+      console.error(e);
     }
 
     form.reset();
