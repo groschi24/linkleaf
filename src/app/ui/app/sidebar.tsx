@@ -10,21 +10,16 @@ import {
   AppShell,
 } from '@mantine/core';
 import {
-  IconHome2,
-  IconGauge,
   IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
-  IconUser,
   IconSettings,
   IconLogout,
-  IconSwitchHorizontal,
   IconBrandGithub,
+  IconPencil,
 } from '@tabler/icons-react';
 import classes from '@/styles/AppSidebar.module.css';
 
 interface NavbarLinkProps {
-  icon: typeof IconHome2;
+  icon: typeof IconSettings;
   label: string;
   active?: boolean;
   onClick?(): void;
@@ -45,17 +40,13 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: 'Home' },
-  { icon: IconGauge, label: 'Dashboard' },
+  { icon: IconPencil, label: 'Designer' },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
-  { icon: IconCalendarStats, label: 'Releases' },
-  { icon: IconUser, label: 'Account' },
-  { icon: IconFingerprint, label: 'Security' },
-  { icon: IconSettings, label: 'Settings' },
+  // { icon: IconSettings, label: 'Settings' },
 ];
 
 export default function AppSidebar() {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
 
   const links = mockdata.map((link, index) => (
     <NavbarLink
@@ -79,7 +70,7 @@ export default function AppSidebar() {
       </div>
 
       <Stack justify='center' gap={0}>
-        <NavbarLink icon={IconSwitchHorizontal} label='Change account' />
+        <NavbarLink icon={IconSettings} label='Settings' />
         <NavbarLink icon={IconLogout} label='Logout' />
       </Stack>
     </AppShell.Navbar>
