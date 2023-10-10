@@ -13,7 +13,7 @@ export default function CheckAuth({ children }: { children: React.ReactNode }) {
     if (status === 'unauthenticated') {
       router.push('/');
     }
-  }, [status]);
+  }, [status, router]);
 
   if (status === 'authenticated') {
     return children;

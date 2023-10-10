@@ -7,6 +7,7 @@ import {
   Button,
   Group,
   Menu,
+  Text,
   TextInput,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -17,9 +18,10 @@ import {
   IconTrash,
 } from '@tabler/icons-react';
 import { useEffect } from 'react';
+import ProfileDropzone from './profileDropzone';
 
 export default function ContentForm() {
-  const { title, changeTitle, bio, changeBio } = useStore();
+  const { title, changeTitle, bio, changeBio, changeProfileImage } = useStore();
 
   const form = useForm({
     initialValues: {
@@ -34,20 +36,18 @@ export default function ContentForm() {
   }, [form.values]);
 
   return (
-    <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Group align='center' justify='space-between'>
-        <div
-          style={{
-            width: 50,
-            height: 50,
-            border: '1px solid black',
-            borderRadius: 9999,
-          }}
-        />
+    <form
+      onSubmit={form.onSubmit((values) => console.log(values))}
+      className='flex flex-col gap-6'
+    >
+      <ProfileDropzone onDrop={(files) => changeProfileImage(files[0])} />
+
+      <Group>
         <TextInput
           withAsterisk
           label='Title'
           placeholder='Title'
+          className='flex-1'
           {...form.getInputProps('title')}
         />
 
@@ -55,6 +55,7 @@ export default function ContentForm() {
           withAsterisk
           label='Bio'
           placeholder='Bio'
+          className='flex-1'
           {...form.getInputProps('bio')}
         />
       </Group>

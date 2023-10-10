@@ -1,6 +1,9 @@
+import { FileWithPath } from '@mantine/dropzone';
 import { create } from 'zustand';
 
 type Store = {
+  profileImage: FileWithPath | null;
+  changeProfileImage: (file: FileWithPath) => void;
   title: string;
   changeTitle: (value: string) => void;
   bio: string;
@@ -18,6 +21,8 @@ type Store = {
 };
 
 export const useStore = create<Store>((set) => ({
+  profileImage: null,
+  changeProfileImage: (value) => set(() => ({ profileImage: value })),
   title: 'Caroline Berger',
   changeTitle: (value) => set(() => ({ title: value })),
   bio: 'I am a fashion influancer, that loves to create posts on tiktok.',

@@ -1,8 +1,17 @@
 import { useStore } from '@/lib/store/zustand';
+import { Image } from '@mantine/core';
+import { IconUser } from '@tabler/icons-react';
 
 export default function PhoneMock() {
-  const { title, bio, linkBold, linkSize, linkBackgroundColor, linkTextColor } =
-    useStore();
+  const {
+    profileImage,
+    title,
+    bio,
+    linkBold,
+    linkSize,
+    linkBackgroundColor,
+    linkTextColor,
+  } = useStore();
 
   return (
     <>
@@ -14,7 +23,21 @@ export default function PhoneMock() {
         <div className='h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg'></div>
         <div className='rounded-[2rem] overflow-hidden overflow-y-scroll scrollbar-hide w-[272px] h-[572px] bg-white'>
           <div className='py-12 px-8 text-center flex flex-col gap-2 items-center'>
-            <div className='w-20 h-20 mb-4 rounded-full border border-solid border-slate-700' />
+            <div
+              id='image-placeholder'
+              className='w-16 h-16 border border-solid border-t-slate-300 rounded-full flex justify-center items-center overflow-hidden'
+            >
+              {profileImage ? (
+                <Image
+                  src={URL.createObjectURL(profileImage)}
+                  onLoad={() =>
+                    URL.revokeObjectURL(URL.createObjectURL(profileImage))
+                  }
+                />
+              ) : (
+                <IconUser size={18} />
+              )}
+            </div>
             <span className='text-xl font-bold text-black'>
               {title.length > 0 ? title : 'Please add title'}
             </span>

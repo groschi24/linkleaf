@@ -3,7 +3,7 @@
 import '@/styles/devices.min.css';
 import '@/styles/customdevices.css';
 
-import { Tabs } from '@mantine/core';
+import { Tabs, Text, Title } from '@mantine/core';
 import { IconColorPicker, IconLink } from '@tabler/icons-react';
 import ContentForm from '@/ui/app/contentForm';
 import StyleForm from '@/ui/app/styleForm';
@@ -26,7 +26,14 @@ export default function Home() {
                 Style
               </Tabs.Tab>
             </Tabs.List>
-            <Tabs.Panel value='content' p='md'>
+            <Tabs.Panel value='content' py='lg'>
+              <Title order={3} size='h1'>
+                Let&apos;s add your details
+              </Title>
+              <Text size='sm' c='dimmed' mb='xl'>
+                Define what content to display on your page
+              </Text>
+
               <ContentForm />
             </Tabs.Panel>
             <Tabs.Panel value='style' p='md'>

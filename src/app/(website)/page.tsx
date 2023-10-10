@@ -27,6 +27,11 @@ export default async function Home() {
           <DeleteNote noteId={note.id} />
         </Card>
       ))}
+
+      <div className='w-full h-96 bg-red-200' />
+      <div className='w-full h-96 bg-green-200' />
+      <div className='w-full h-96 bg-red-200' />
+      <div className='w-full h-96 bg-green-200' />
     </main>
   );
 }
