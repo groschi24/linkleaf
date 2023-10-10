@@ -1,8 +1,7 @@
-import '@mantine/core/styles.css';
+import CheckAuth from '@/middleware/checkAuth';
+import MainShell from '@/ui/app/mainShell';
 
 import type { Metadata } from 'next';
-
-import MainShell from '../ui/app/mainShell';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,5 +13,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <MainShell>{children}</MainShell>;
+  return (
+    <CheckAuth>
+      <MainShell>{children} </MainShell>
+    </CheckAuth>
+  );
 }

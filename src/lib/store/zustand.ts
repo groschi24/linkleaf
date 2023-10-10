@@ -13,6 +13,8 @@ type Store = {
   changeLinkBackgroundColor: (value: string) => void;
   linkTextColor: string;
   changeLinkTextColor: (value: string) => void;
+  customCss: string;
+  changeCustomCss: (value: string) => void;
 };
 
 export const useStore = create<Store>((set) => ({
@@ -29,4 +31,6 @@ export const useStore = create<Store>((set) => ({
     set(() => ({ linkBackgroundColor: value })),
   linkTextColor: 'rgba(255,255,255,1)',
   changeLinkTextColor: (value) => set(() => ({ linkTextColor: value })),
+  customCss: '',
+  changeCustomCss: (value) => set(() => ({ title: value })),
 }));

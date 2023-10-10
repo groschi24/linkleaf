@@ -3,114 +3,41 @@
 import '@/styles/devices.min.css';
 import '@/styles/customdevices.css';
 
-import {
-  Button,
-  Checkbox,
-  ColorPicker,
-  Group,
-  Select,
-  Text,
-  TextInput,
-} from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useEffect, useState } from 'react';
-import PhoneMock from '../ui/app/phoneMock';
-import { useStore } from '@/lib/store/zustand';
+import { Tabs } from '@mantine/core';
+import { IconColorPicker, IconLink } from '@tabler/icons-react';
+import ContentForm from '@/ui/app/contentForm';
+import StyleForm from '@/ui/app/styleForm';
+import PhoneMock from '@/ui/app/phoneMock';
 
 export default function Home() {
-  const {
-    title,
-    changeTitle,
-    bio,
-    changeBio,
-    linkBold,
-    changeLinkBold,
-    linkSize,
-    changeLinkSize,
-    linkBackgroundColor,
-    changeLinkBackgroundColor,
-    linkTextColor,
-    changeLinkTextColor,
-  } = useStore();
-
-  const form = useForm({
-    initialValues: {
-      title: title,
-      bio: bio,
-      linkBold: linkBold,
-      linkSize: linkSize,
-    },
-  });
-
-  useEffect(() => {
-    changeTitle(form.values.title);
-    changeBio(form.values.bio);
-    changeLinkBold(form.values.linkBold);
-    changeLinkSize(form.values.linkSize);
-  }, [form.values]);
-
   return (
-    <main className='p-12'>
+    <main>
       <div className='flex justify-between'>
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
-          <Group align='center' justify='space-between'>
-            <div
-              style={{
-                width: 50,
-                height: 50,
-                border: '1px solid black',
-                borderRadius: 9999,
-              }}
-            />
-            <TextInput
-              withAsterisk
-              label='Title'
-              placeholder='Title'
-              {...form.getInputProps('title')}
-            />
+        <div className='relative p-4 flex-1 w-full min-h-screen border-r border-solid border-slate-200'>
+          <Tabs defaultValue='content'>
+            <Tabs.List grow>
+              <Tabs.Tab value='content' leftSection={<IconLink size={18} />}>
+                Content
+              </Tabs.Tab>
+              <Tabs.Tab
+                value='style'
+                leftSection={<IconColorPicker size={18} />}
+              >
+                Style
+              </Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value='content' p='md'>
+              <ContentForm />
+            </Tabs.Panel>
+            <Tabs.Panel value='style' p='md'>
+              <StyleForm />
+            </Tabs.Panel>
+          </Tabs>
+        </div>
 
-            <TextInput
-              withAsterisk
-              label='Bio'
-              placeholder='Bio'
-              {...form.getInputProps('bio')}
-            />
-          </Group>
-
-          <Group mt='md'>
-            <div>
-              <Text>Link Background</Text>
-
-              <ColorPicker
-                format='rgba'
-                value={linkBackgroundColor}
-                onChange={changeLinkBackgroundColor}
-              />
-            </div>
-
-            <div>
-              <Text>Link Text</Text>
-              <ColorPicker
-                format='rgba'
-                value={linkTextColor}
-                onChange={changeLinkTextColor}
-              />
-            </div>
-          </Group>
-
-          <Checkbox label='Link Bold' {...form.getInputProps('linkBold')} />
-          <Select
-            label='Link Size'
-            data={['xs', 'sm', 'base', 'lg', 'xl']}
-            {...form.getInputProps('linkSize')}
-          />
-
-          <Group justify='flex-end' mt='md'>
-            <Button type='submit'>Submit</Button>
-          </Group>
-        </form>
-
-        <PhoneMock />
+        <div className='relative pl-8 pr-4 pt-12'>
+          <PhoneMock />
+        </div>
       </div>
     </main>
   );

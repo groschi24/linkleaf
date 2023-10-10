@@ -3,6 +3,7 @@ import '@mantine/core/styles.css';
 
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
+import NextAuthProvider from '@/ui/authProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,7 +21,9 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <NextAuthProvider>{children}</NextAuthProvider>
+        </MantineProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import prisma from '@/lib/prisma';
-import AddNote from '../ui/website/addNote';
-import DeleteNote from '../ui/website/deleteNote';
+import AddNote from '@/ui/website/addNote';
+import DeleteNote from '@/ui/website/deleteNote';
+import Navigation from '@/ui/website/navigation';
 import { Card } from '@mantine/core';
 
 async function getNotes() {
@@ -15,6 +16,8 @@ export default async function Home() {
 
   return (
     <main className='p-8'>
+      <Navigation />
+
       <AddNote />
 
       {notes.map((note) => (
