@@ -1,12 +1,14 @@
 import { useStore } from '@/lib/store/zustand';
 import { Image } from '@mantine/core';
 import { IconUser } from '@tabler/icons-react';
+import SocialLogo from 'social-logos';
 
 export default function PhoneMock() {
   const {
     profileImage,
     title,
     bio,
+    socialIcons,
     linkBold,
     linkSize,
     linkBackgroundColor,
@@ -45,10 +47,17 @@ export default function PhoneMock() {
               {bio.length > 0 ? bio : 'Please add bio'}
             </span>
             <div className='flex gap-2 mt-4'>
-              <div className='w-6 h-6 rounded-full border border-solid border-slate-700' />
-              <div className='w-6 h-6 rounded-full border border-solid border-slate-700' />
-              <div className='w-6 h-6 rounded-full border border-solid border-slate-700' />
-              <div className='w-6 h-6 rounded-full border border-solid border-slate-700' />
+              {socialIcons.map((icon) => (
+                <div
+                  key={icon.platform}
+                  className='w-8 h-8 flex justify-center items-center rounded-full border border-solid border-slate-700'
+                >
+                  <SocialLogo
+                    icon={icon.platform.toLowerCase() as any}
+                    size={18}
+                  />
+                </div>
+              ))}
             </div>
             <span className='uppercase text-sm font-bold mt-4 mb-2'>
               Useful links

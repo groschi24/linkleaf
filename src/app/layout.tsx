@@ -41,6 +41,7 @@ export default function RootLayout({
           theme={{
             fontFamily: sansFont.style.fontFamily,
             fontFamilyMonospace: monoFont.style.fontFamily,
+            defaultRadius: 'lg',
           }}
         >
           <NextAuthProvider>{children}</NextAuthProvider>

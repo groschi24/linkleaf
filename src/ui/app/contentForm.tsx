@@ -8,7 +8,15 @@ import ProfileDropzone from './profileDropzone';
 import SocialLinks from './socialLinks';
 
 export default function ContentForm() {
-  const { title, changeTitle, bio, changeBio, changeProfileImage } = useStore();
+  const {
+    title,
+    changeTitle,
+    bio,
+    changeBio,
+    changeProfileImage,
+    socialIcons,
+    addSocialIcon,
+  } = useStore();
 
   const form = useForm({
     initialValues: {
@@ -47,7 +55,10 @@ export default function ContentForm() {
         />
       </Group>
 
-      <SocialLinks />
+      <SocialLinks
+        socialIcons={socialIcons}
+        onAdd={(platform, username) => addSocialIcon(platform, username)}
+      />
 
       <Group justify='flex-end' mt='md'>
         <Button type='submit'>Submit</Button>
