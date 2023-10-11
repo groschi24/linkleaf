@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs, Text, Title } from '@mantine/core';
+import { Group, Tabs, Text, Title } from '@mantine/core';
 import { IconColorPicker, IconLink } from '@tabler/icons-react';
 import ContentForm from '@/ui/app/contentForm';
 import StyleForm from '@/ui/app/styleForm';
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <div className='flex justify-between'>
-        <div className='relative p-4 flex-1 w-full min-h-screen border-r border-solid border-slate-200'>
+        <div className='relative p-4 flex-1 w-full min-h-screen border-0 border-r border-solid border-slate-200'>
           <Tabs defaultValue='content'>
             <Tabs.List grow>
               <Tabs.Tab value='content' leftSection={<IconLink size={18} />}>
