@@ -1,8 +1,5 @@
 'use client';
 
-import '@/styles/devices.min.css';
-import '@/styles/customdevices.css';
-
 import { Tabs, Text, Title } from '@mantine/core';
 import { IconColorPicker, IconLink } from '@tabler/icons-react';
 import ContentForm from '@/ui/app/contentForm';

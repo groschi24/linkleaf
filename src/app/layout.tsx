@@ -1,3 +1,4 @@
+import '@/styles/tailwind-preflight.css';
 import '@/styles/tailwind.css';
 import '@mantine/core/styles.css';
 import { Inter, Roboto_Mono } from 'next/font/google';
