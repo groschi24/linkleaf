@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "bun run migrate:prod && next start",
+    "build": "bun run migrate:prod && next build",
+    "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "migrate:dev": "prisma migrate dev",
