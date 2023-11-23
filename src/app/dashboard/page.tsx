@@ -33,7 +33,14 @@ export default function Home() {
 
               <ContentForm />
             </Tabs.Panel>
-            <Tabs.Panel value='style' p='md'>
+            <Tabs.Panel value='style' py='lg'>
+              <Title order={3} size='h1'>
+                Craft Your Unique Look
+              </Title>
+              <Text size='sm' c='dimmed' mb='xl'>
+                Shape Your Distinctive Style with Personalized Choices
+              </Text>
+
               <StyleForm />
             </Tabs.Panel>
           </Tabs>

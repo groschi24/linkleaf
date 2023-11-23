@@ -9,10 +9,11 @@ export default function PhoneMock() {
     title,
     bio,
     socialIcons,
-    linkBold,
+    linkWeight,
     linkSize,
     linkBackgroundColor,
     linkTextColor,
+    links,
   } = useStore();
 
   return (
@@ -63,28 +64,22 @@ export default function PhoneMock() {
               Useful links
             </span>
             <div className='w-full flex flex-col gap-2'>
-              <div
-                className='flex justify-center items-center px-6 py-2 w-full rounded'
-                style={{ background: linkBackgroundColor }}
-              >
-                <span
-                  className={`${linkBold ? 'font-bold' : ''} text-${linkSize}`}
-                  style={{ color: linkTextColor }}
+              {links.map((link) => (
+                <div
+                  key={link.id}
+                  className={`flex justify-center items-center px-6 py-2 w-full rounded ${
+                    link.visible ? '' : 'hidden'
+                  }`}
+                  style={{ background: linkBackgroundColor }}
                 >
-                  Lorem Ipsum
-                </span>
-              </div>
-              <div
-                className='flex justify-center items-center px-6 py-2 w-full rounded'
-                style={{ background: linkBackgroundColor }}
-              >
-                <span
-                  className={`${linkBold ? 'font-bold' : ''} text-${linkSize}`}
-                  style={{ color: linkTextColor }}
-                >
-                  Lorem Ipsum
-                </span>
-              </div>
+                  <span
+                    className={`font-${linkWeight} text-${linkSize}`}
+                    style={{ color: linkTextColor }}
+                  >
+                    {link.title}
+                  </span>
+                </div>
+              ))}
             </div>
             <span className='uppercase text-sm font-bold mt-4 mb-2'>
               Show your support
@@ -95,7 +90,7 @@ export default function PhoneMock() {
                 style={{ background: linkBackgroundColor }}
               >
                 <span
-                  className={`${linkBold ? 'font-bold' : ''} text-${linkSize}`}
+                  className={`font-${linkWeight} text-${linkSize}`}
                   style={{ color: linkTextColor }}
                 >
                   Buy me a coffee!

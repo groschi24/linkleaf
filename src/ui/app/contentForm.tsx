@@ -6,6 +6,7 @@ import { useForm } from '@mantine/form';
 import { useEffect } from 'react';
 import ProfileDropzone from './profileDropzone';
 import SocialLinks from './socialLinks';
+import DragableLinks from './dragableLinks';
 
 export default function ContentForm() {
   const {
@@ -60,9 +61,11 @@ export default function ContentForm() {
         onAdd={(platform, username) => addSocialIcon(platform, username)}
       />
 
-      <Group justify='flex-end' mt='md'>
-        <Button type='submit'>Submit</Button>
-      </Group>
+      <DragableLinks />
+
+      <Button type='submit' color='dark'>
+        Save
+      </Button>
     </form>
   );
 }

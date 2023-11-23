@@ -1,37 +1,9 @@
-import prisma from '@/lib/prisma';
-import AddNote from '@/ui/website/addNote';
-import DeleteNote from '@/ui/website/deleteNote';
-import Navigation from '@/ui/website/navigation';
-import { Card } from '@mantine/core';
-
-async function getNotes() {
-  const notes = await prisma.note.findMany({
-    where: { published: true },
-  });
-  return notes;
-}
+import Hero from '@/ui/website/hero';
 
 export default async function Home() {
-  const notes = await getNotes();
-
   return (
-    <main className='p-8'>
-      <Navigation />
-
-      <AddNote />
-
-      {notes.map((note) => (
-        <Card mt='md' key={note.id} withBorder>
-          <p>{note.title}</p>
-          <p>{note.content}</p>
-          <DeleteNote noteId={note.id} />
-        </Card>
-      ))}
-
-      <div className='w-full h-96 bg-red-200' />
-      <div className='w-full h-96 bg-green-200' />
-      <div className='w-full h-96 bg-red-200' />
-      <div className='w-full h-96 bg-green-200' />
-    </main>
+    <>
+      <Hero />
+    </>
   );
 }

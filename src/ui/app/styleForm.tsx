@@ -1,21 +1,15 @@
 'use client';
 
 import { useStore } from '@/lib/store/zustand';
-import {
-  Button,
-  Checkbox,
-  ColorPicker,
-  Group,
-  Select,
-  Text,
-} from '@mantine/core';
+import { Button, Group, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect } from 'react';
+import InputColorPicker from './inputColorPicker';
 
 export default function StyleForm() {
   const {
-    linkBold,
-    changeLinkBold,
+    linkWeight,
+    changeLinkWeight,
     linkSize,
     changeLinkSize,
     linkBackgroundColor,
@@ -26,49 +20,58 @@ export default function StyleForm() {
 
   const form = useForm({
     initialValues: {
-      linkBold: linkBold,
+      linkWeight: linkWeight,
       linkSize: linkSize,
     },
   });
 
   useEffect(() => {
-    changeLinkBold(form.values.linkBold);
+    changeLinkWeight(form.values.linkWeight);
     changeLinkSize(form.values.linkSize);
   }, [form.values]);
 
+  //#D2E722
+
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Group mt='md'>
-        <div>
-          <Text>Link Background</Text>
+      <div className='flex flex-col gap-2'>
+        <InputColorPicker
+          label='Link Background'
+          initialColor={linkBackgroundColor}
+          onChange={changeLinkBackgroundColor}
+        />
 
-          <ColorPicker
-            format='rgba'
-            value={linkBackgroundColor}
-            onChange={changeLinkBackgroundColor}
-          />
-        </div>
+        <InputColorPicker
+          label='Link Text'
+          initialColor={linkTextColor}
+          onChange={changeLinkTextColor}
+        />
 
-        <div>
-          <Text>Link Text</Text>
-          <ColorPicker
-            format='rgba'
-            value={linkTextColor}
-            onChange={changeLinkTextColor}
-          />
-        </div>
-      </Group>
+        <Select
+          label='Link Weight'
+          description='Not all weights are supported from every font'
+          data={[
+            'thin',
+            'light',
+            'normal',
+            'medium',
+            'semibold',
+            'bold',
+            'extrabold',
+            'black',
+          ]}
+          {...form.getInputProps('linkWeight')}
+        />
+        <Select
+          label='Link Size'
+          data={['xs', 'sm', 'base', 'lg', 'xl']}
+          {...form.getInputProps('linkSize')}
+        />
+      </div>
 
-      <Checkbox label='Link Bold' {...form.getInputProps('linkBold')} />
-      <Select
-        label='Link Size'
-        data={['xs', 'sm', 'base', 'lg', 'xl']}
-        {...form.getInputProps('linkSize')}
-      />
-
-      <Group justify='flex-end' mt='md'>
+      {/* <Group justify='flex-end' mt='md'>
         <Button type='submit'>Submit</Button>
-      </Group>
+      </Group> */}
     </form>
   );
 }
