@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils';
 import { useParams, useSelectedLayoutSegment } from 'next/navigation';
 import MaxWidthWrapper from '../maxWidthWrapper';
 import Link from 'next/link';
-import { IconLeaf } from '@tabler/icons-react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Logo from '../logo';
 
 export default function Nav() {
   const { data: session, status } = useSession();
@@ -31,8 +31,7 @@ export default function Nav() {
             <Link
               href={domain === 'linkleaf.app' ? '/' : `https://linkleaf.app`}
             >
-              {/* <LogoType className='fill-blue-500 text-blue-500' /> */}
-              <IconLeaf size={32} className='text-white' />
+              <Logo className='fill-blue-500 text-blue-500' />
             </Link>
           </div>
 

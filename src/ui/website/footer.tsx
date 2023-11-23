@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import MaxWidthWrapper from '../maxWidthWrapper';
-import { IconLeaf } from '@tabler/icons-react';
+import Logo from '../logo';
 
 const navigation = {
   product: [
@@ -41,8 +41,7 @@ export default function Footer() {
           <div className='space-y-8 xl:col-span-2'>
             <Link href={createHref('/')}>
               <span className='sr-only'>Linkleaf Logo</span>
-              {/* <LogoType className='h-7 text-gray-600 dark:text-slate-400' /> */}
-              <IconLeaf size={32} className='text-white' />
+              <Logo className='h-8 fill-white' />
             </Link>
             <p className='max-w-xs text-sm text-gray-500 dark:text-slate-300'>
               Privacy-friendly and cookie-free web analytics.
