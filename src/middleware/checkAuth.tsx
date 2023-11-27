@@ -19,5 +19,9 @@ export default function CheckAuth({ children }: { children: React.ReactNode }) {
     return children;
   }
 
-  return <Loader />;
+  return (
+    <div className='flex justify-center items-center w-screen h-screen overflow-hidden bg-gray-100 z-50'>
+      <Loader />
+    </div>
+  );
 }

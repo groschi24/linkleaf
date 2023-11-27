@@ -1,7 +1,9 @@
 import { useStore } from '@/lib/store/zustand';
 import { Image } from '@mantine/core';
 import { IconUser } from '@tabler/icons-react';
-import SocialLogo from 'social-logos';
+import SocialIcons from '../profile/socialIcons';
+import Link from 'next/link';
+import Logo from '../logo';
 
 export default function PhoneMock() {
   const {
@@ -48,17 +50,7 @@ export default function PhoneMock() {
               {bio.length > 0 ? bio : 'Please add bio'}
             </span>
             <div className='flex gap-2 mt-4'>
-              {socialIcons.map((icon) => (
-                <div
-                  key={icon.platform}
-                  className='w-8 h-8 flex justify-center items-center rounded-full border border-solid border-slate-700'
-                >
-                  <SocialLogo
-                    icon={icon.platform.toLowerCase() as any}
-                    size={18}
-                  />
-                </div>
-              ))}
+              <SocialIcons icons={socialIcons} />
             </div>
             <span className='uppercase text-sm font-bold mt-4 mb-2'>
               Useful links
@@ -98,8 +90,16 @@ export default function PhoneMock() {
               </div>
             </div>
 
-            <div className='mt-12'>
-              <span>LinkLeaf</span>
+            <div className='absolute bottom-8 mt-12'>
+              <Link
+                href='https://linkleaf.app'
+                rel='noopener noreferrer'
+                target='_blank'
+                className='flex gap-1 items-center'
+              >
+                <Logo className='fill-blue-500 text-blue-500' />
+                LinkLeaf
+              </Link>
             </div>
           </div>
         </div>
